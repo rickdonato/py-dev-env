@@ -1,5 +1,3 @@
-venv
-
 # virl directory
 .virl/*
 
@@ -108,7 +106,7 @@ celerybeat-schedule
 .env
 .venv
 env/
-venv/
+venv*/
 ENV/
 env.bak/
 venv.bak/
