@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-#export PYROOT=./ansible/scripts
+#export PYROOT=.
 export YAMLROOT=./ansible/
 
 .PHONY: help
@@ -14,17 +14,17 @@ remove-yml-eol-spaces: ## Remove end of line spaces from yaml files
         @echo "[*] Removing EOL YAML spaces."
         @find ./ \( -name *.yaml -o -name *.yml \) | xargs sed -i  "s/\s *$$//g"
 
-.PHONY: yaml-lint
-yaml-lint: ## Perform linting against ansible yaml files
+.PHONY: lint-yaml
+lint-yaml: ## Perform linting against ansible yaml files
         @echo "[*] Performing YAML Lint."
         @. ./venv/bin/activate
-        @find ./ansible/ \( -name *.yaml -o -name *.yml \) -exec ansible-lint -x ANSIBLE0012 {} +
+        @find $$YAMLROOT \( -name *.yaml -o -name *.yml \) -exec ansible-lint -x ANSIBLE0012 {} +
 
-.PHONY: py-lint
-py-lint: ## Perform linting against py files
+.PHONY: lint-py
+lint-py: ## Perform linting against py files
         @echo "[*] Performing PyLint."
         @. ./venv/bin/activate
-        @find $$YAMLROOT \( -path ./venv -prune -o -name *.py \) -exec pylint {} +
+        @find $$PYROOT \( -path ./venv -prune -o -name *.py \) -exec pylint {} +
 
 .PHONY: install-py3.6
 install-py3.6: ## Install Python3.6
@@ -53,6 +53,6 @@ add-venv-py2.7: ## Install virtualenv, create virtualenv, install requirements
 
 .PHONY: lint
 lint: ## Remove YAML EOL spaces, perform yaml and py linting.
-lint:   remove-yml-eol-spaces yaml-lint py-lint
+lint:   remove-yml-eol-spaces lint-yaml lint-py
 
 # :%s/^[ ]\+/\t/g - automatically replace all tabs with spaces
