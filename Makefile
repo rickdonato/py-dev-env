@@ -14,8 +14,8 @@ remove-yml-eol-spaces: ## Remove end of line spaces from yaml files
         @echo "[*] Removing EOL YAML spaces."
         @find ./ \( -name *.yaml -o -name *.yml \) | xargs sed -i  "s/\s *$$//g"
 
-.PHONY: lint-yaml
-lint-yaml: ## Perform linting against ansible yaml files
+.PHONY: lint-ansible
+lint-ansible: ## Perform linting against ansible yaml files
         @echo "[*] Performing YAML Lint."
         @. ./venv/bin/activate
         @find $$YAMLROOT \( -name *.yaml -o -name *.yml \) -exec ansible-lint -x ANSIBLE0012 {} +
@@ -53,6 +53,6 @@ add-venv-py2.7: ## Install virtualenv, create virtualenv, install requirements
 
 .PHONY: lint
 lint: ## Remove YAML EOL spaces, perform yaml and py linting.
-lint:   remove-yml-eol-spaces lint-yaml lint-py
+lint:   remove-yml-eol-spaces lint-ansible lint-py
 
 # :%s/^[ ]\+/\t/g - automatically replace all tabs with spaces
