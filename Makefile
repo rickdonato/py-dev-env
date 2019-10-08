@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-#export PYROOT=.
+export PYROOT=.
 export YAMLROOT=./ansible/
 
 .PHONY: help
