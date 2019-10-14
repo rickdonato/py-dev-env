@@ -1,5 +1,5 @@
 ## Purpose
-The purpose of this template is to be used as a **Repository template** when creating new repos.
+The purpose of this template is to be used as a **repository template** when creating new repos.
 
 ## Makefile
 The Makefile provides the following:
@@ -7,6 +7,9 @@ The Makefile provides the following:
 # make
   add-venv-py2.7            Install virtualenv, create virtualenv, install requirements
   add-venv-py3.6            Install virtualenv, create virtualenv, install requirements
+  black-check               Perform Black formatting against py files. Check ONLY.
+  black-diff                Perform formatting against py files. Diff ONLY.
+  black                     Perform formatting against py files.
   install-py3.6             Install Python3.6
   lint-ansible              Perform linting against ansible yaml files
   lint-py                   Perform linting against py files
