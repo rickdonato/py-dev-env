@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 
 export PYROOT=.
-export YAMLROOT=./ansible/
+export ANSIBLEROOT=./ansible/
 
 .PHONY: help
 help:
@@ -18,7 +18,7 @@ remove-yml-eol-spaces: ## Remove end of line spaces from yaml files
 lint-ansible: ## Perform linting against ansible yaml files
 	@echo "[*] Performing YAML Lint."
 	@. ./venv/bin/activate
-	@find $$YAMLROOT \( -name *.yaml -o -name *.yml \) -exec ansible-lint -x ANSIBLE0012 {} +
+	@find $$ANSIBLEROOT \( -name *.yaml -o -name *.yml \) -exec ansible-lint {} +
 
 .PHONY: lint-py
 lint-py: ## Perform linting against py files
