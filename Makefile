@@ -59,7 +59,7 @@ add-venv-py3.6: ## Install virtualenv, create virtualenv, install requirements
 	pip3.6 install virtualenv
 	virtualenv -p /usr/bin/python3.6 venv
 	. ./venv/bin/activate
-	venv/bin/pip3.6 install -q -r ./requirements.txt
+	venv/bin/pip3.6 install -r ./requirements.txt
 
 .PHONY: add-venv-py2.7
 add-venv-py2.7: ## Install virtualenv, create virtualenv, install requirements
@@ -67,10 +67,11 @@ add-venv-py2.7: ## Install virtualenv, create virtualenv, install requirements
 	pip2.7 install virtualenv
 	virtualenv -p /usr/bin/python2.7 venv
 	. ./venv/bin/activate
-	venv/bin/pip2.7 install -q -r ./requirements.txt
+	venv/bin/pip2.7 install -r ./requirements.txt
 
 .PHONY: lint
 lint: ## Remove YAML EOL spaces, perform yaml and py linting.
 lint:   remove-yml-eol-spaces lint-ansible lint-py
 
 # :%s/^[ ]\+/\t/g - automatically replace all tabs with spaces
+# to do, move to format, lint, test
