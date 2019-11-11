@@ -69,6 +69,11 @@ add-venv-py2.7: ## Install virtualenv, create virtualenv, install requirements
         . ./venv/bin/activate
         venv/bin/pip2.7 install -r ./requirements.txt
 
+.PHONY: update-requirements
+update-requirements: ## Update pip requirements.txt
+	@echo "[*] Updating pip requirements.txt"
+	pip freeze > requirements.txt
+
 .PHONY: lint
 lint: ## Remove YAML EOL spaces, perform yaml and py linting.
 lint:   remove-yml-eol-spaces lint-ansible lint-py
