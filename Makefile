@@ -53,6 +53,13 @@ install-py3.6: ## Install Python3.6
         sudo -H pip3 install --upgrade pip
         curl https://bootstrap.pypa.io/get-pip.py | sudo -H python3.6
 
+.PHONY: install-py3.8
+install-py3.8: ## Install Python3.8
+        @echo "[*] Installing Py3.8 (Still in testing) ..."
+        sudo add-apt-repository ppa:deadsnakes/ppa
+        sudo apt update
+        sudo apt install python3.8 python3-pip
+       
 .PHONY: add-venv-py3.6
 add-venv-py3.6: ## Install virtualenv, create virtualenv, install requirements
         @echo "[*] Installing/creating virtualenv and deps (Python3.6)"
@@ -60,6 +67,15 @@ add-venv-py3.6: ## Install virtualenv, create virtualenv, install requirements
         virtualenv -p /usr/bin/python3.6 venv
         . ./venv/bin/activate
         venv/bin/pip3.6 install -r ./requirements.txt
+
+.PHONY: add-venv-py3.8
+add-venv-py3.8: ## Install virtualenv, create virtualenv, install requirements
+        @echo "[*] Installing/creating virtualenv and deps (Python3.8)"
+        pip3 install virtualenv
+	apt-get install python3.8-distutils -y
+        virtualenv -p /usr/bin/python3.8 venv
+        . ./venv/bin/activate
+        venv/bin/pip3 install -r ./requirements.txt
 
 .PHONY: add-venv-py2.7
 add-venv-py2.7: ## Install virtualenv, create virtualenv, install requirements
