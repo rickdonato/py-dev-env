@@ -20,3 +20,9 @@ The Makefile provides the following:
 ## Ansible
 The included Ansible dir includes a predefined `ansible.cfg` file. 
 If you are not using Ansible for your project feel free to delete the directory and remove the required entries from `requirements.txt`.
+
+--
+## About
+## Layout
+## Files
+## Misc
