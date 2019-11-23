@@ -49,7 +49,7 @@ install-py3.6: ## Install Python3.6
         @echo "[*] Installing Py3.6."
         sudo add-apt-repository ppa:jonathonf/python-3.6
         sudo apt update
-        sudo apt install python3.6 python3-pip
+        sudo apt install python3.6 python3-pip python3.6-dev
         sudo -H pip3 install --upgrade pip
         curl https://bootstrap.pypa.io/get-pip.py | sudo -H python3.6
 
@@ -58,7 +58,7 @@ install-py3.8: ## Install Python3.8
         @echo "[*] Installing Py3.8 (Still in testing) ..."
         sudo add-apt-repository ppa:deadsnakes/ppa
         sudo apt update
-        sudo apt install python3.8 python3-pip
+        sudo apt install python3.8 python3-pip python3.8-dev
        
 .PHONY: add-venv-py3.6
 add-venv-py3.6: ## Install virtualenv, create virtualenv, install requirements
