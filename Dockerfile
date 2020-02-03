@@ -7,7 +7,7 @@ LABEL maintainer="Rick Donato"
 WORKDIR /workspace
 COPY . /workspace
 
-RUN apt-get update-y 
+RUN apt-get update -y 
 RUN apt-get install -y tcpdump curl wget 
 
 RUN pip install -r requirements.txt 
