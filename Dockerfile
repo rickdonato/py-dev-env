@@ -1,12 +1,11 @@
 FROM continuumio/miniconda3
 
 LABEL version="0.0.1"
-LABEL description="Python based dev enironment"
+LABEL description="Python based dev environment"
 LABEL maintainer="Rick Donato"
 
-WORKDIR /app
-
-COPY . /app
+WORKDIR /workspace
+COPY . /workspace
 
 RUN apt-get update-y 
 RUN apt-get install -y tcpdump curl wget 
