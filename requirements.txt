@@ -14,7 +14,7 @@ lazy-object-proxy==1.4.2
 MarkupSafe==1.1.1
 mccabe==0.6.1
 pycparser==2.19
-pylint==1.9.5
+pylint
 PyYAML==5.1.2
 ruamel.yaml==0.16.5
 ruamel.yaml.clib==0.2.0
