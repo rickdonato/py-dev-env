@@ -1,5 +1,7 @@
 .DEFAULT_GOAL := help
 
+DOCKER_IMG = rickdonato/netdev
+DOCKER_TAG = latest
 export PYROOT=.
 export ANSIBLEROOT=./ansible/
 
@@ -9,22 +11,14 @@ help:
         sort | \
         awk -F ':.*?## ' 'NF==2 {printf "\033[36m  %-25s\033[0m %s\n", $$1, $$2}'
 
+### -------------------------------------------------
+### FORMAT
+### -------------------------------------------------
+
 .PHONY: remove-yml-eol-spaces
 remove-yml-eol-spaces: ## Remove end of line spaces from yaml files
         @echo "[*] Removing EOL YAML spaces."
         @find ./ \( -name *.yaml -o -name *.yml \) | xargs sed -i  "s/\s *$$//g"
-
-.PHONY: lint-ansible
-lint-ansible: ## Perform linting against ansible yaml files
-        @echo "[*] Performing YAML Lint."
-        @. ./venv/bin/activate
-        @find $$ANSIBLEROOT \( -name *.yaml -o -name *.yml \) -exec ansible-lint {} +
-
-.PHONY: lint-py
-lint-py: ## Perform linting against py files
-        @echo "[*] Performing PyLint."
-        @. ./venv/bin/activate
-        @find $$PYROOT -name venv -prune -o -name '*.py' -exec pylint {} +
 
 .PHONY: black-check
 black-check: ## Perform Black formatting against py files. Check ONLY.
@@ -44,55 +38,40 @@ black: ## Perform formatting against py files.
         @. ./venv/bin/activate
         @find $$PYROOT -name venv -prune -o -name '*.py' -exec black {} +
 
-.PHONY: install-py3.6
-install-py3.6: ## Install Python3.6
-        @echo "[*] Installing Py3.6."
-        sudo add-apt-repository ppa:jonathonf/python-3.6
-        sudo apt update
-        sudo apt install python3.6 python3-pip python3.6-dev
-        sudo -H pip3 install --upgrade pip
-        curl https://bootstrap.pypa.io/get-pip.py | sudo -H python3.6
+### -------------------------------------------------
+### LINT
+### -------------------------------------------------
 
-.PHONY: install-py3.8
-install-py3.8: ## Install Python3.8
-        @echo "[*] Installing Py3.8 (Still in testing) ..."
-        sudo add-apt-repository ppa:deadsnakes/ppa
-        sudo apt update
-        sudo apt install python3.8 python3-pip python3.8-dev
-       
-.PHONY: add-venv-py3.6
-add-venv-py3.6: ## Install virtualenv, create virtualenv, install requirements
-        @echo "[*] Installing/creating virtualenv and deps (Python3.6)"
-        pip3.6 install virtualenv
-        virtualenv -p /usr/bin/python3.6 venv
-        . ./venv/bin/activate
-        venv/bin/pip3.6 install -r ./requirements.txt
+.PHONY: ansible-lint
+lint-ansible: ## Perform linting against ansible yaml files
+        @echo "[*] Performing YAML Lint."
+        @. ./venv/bin/activate
+        @find $$ANSIBLEROOT \( -name *.yaml -o -name *.yml \) -exec ansible-lint {} +
 
-.PHONY: add-venv-py3.8
-add-venv-py3.8: ## Install virtualenv, create virtualenv, install requirements
-        @echo "[*] Installing/creating virtualenv and deps (Python3.8)"
-        pip3 install virtualenv
-	apt-get install python3.8-distutils -y
-        virtualenv -p /usr/bin/python3.8 venv
-        . ./venv/bin/activate
-        venv/bin/pip3 install -r ./requirements.txt
+.PHONY: pylint
+lint-py: ## Perform linting against py files
+        @echo "[*] Performing PyLint."
+        @. ./venv/bin/activate
+        @find $$PYROOT -name venv -prune -o -name '*.py' -exec pylint {} +
 
-.PHONY: add-venv-py2.7
-add-venv-py2.7: ## Install virtualenv, create virtualenv, install requirements
-        @echo "[*] Installing/creating virtualenv and deps (Python2.7)"
-        pip2.7 install virtualenv
-        virtualenv -p /usr/bin/python2.7 venv
-        . ./venv/bin/activate
-        venv/bin/pip2.7 install -r ./requirements.txt
+### -------------------------------------------------
+### OTHER
+### -------------------------------------------------
 
 .PHONY: update-requirements
 update-requirements: ## Update pip requirements.txt
 	@echo "[*] Updating pip requirements.txt"
 	pip freeze > requirements.txt
 
-.PHONY: lint
-lint: ## Remove YAML EOL spaces, perform yaml and py linting.
-lint:   remove-yml-eol-spaces lint-ansible lint-py
+### -------------------------------------------------
+### DOCKER
+### -------------------------------------------------
 
+build: ## build docker container.
+	docker build -t $(DOCKER_IMG):$(DOCKER_TAG) .
+
+run: ## run docker container
+	docker run -d -t \
+	$(DOCKER_IMG):$(DOCKER_TAG)
+	
 # :%s/^[ ]\+/\t/g - automatically replace all tabs with spaces
-# to do, move to format, lint, test
