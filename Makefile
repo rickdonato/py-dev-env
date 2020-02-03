@@ -58,8 +58,8 @@ lint-py: ## Perform linting against py files
 ### OTHER
 ### -------------------------------------------------
 
-.PHONY: update-requirements
-update-requirements: ## Update pip requirements.txt
+.PHONY: update
+update: ## Update pip requirements.txt
 	@echo "[*] Updating pip requirements.txt"
 	pip freeze > requirements.txt
 
