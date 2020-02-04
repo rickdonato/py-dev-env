@@ -8,7 +8,7 @@ WORKDIR /workspace
 COPY . /workspace
 
 RUN apt-get update -y 
-RUN apt-get install -y tcpdump curl wget 
+RUN apt-get install -y tcpdump curl wget gcc 
 
 RUN pip install -r requirements.txt 
 
