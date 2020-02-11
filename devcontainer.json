@@ -17,7 +17,6 @@
 		"python.linting.flake8Enabled": true,
 		"python.linting.enabled": true,
 		"python.linting.flake8Args": [
-			// "--ignore=E501,E402"
 			"--max-line-length=88"
 		],
 		"python.formatting.provider": "black",
