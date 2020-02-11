@@ -1,0 +1,27 @@
+{
+	"name": "docker-vscode-env",
+	"context": "..",
+	"dockerFile": "../Dockerfile",
+	//"workspaceFolder": "/<app>",
+	//"workspaceMount": "src=/home/<user>/tmp,dst=/<app>,type=bind",
+	"extensions": [
+		"ms-python.python",
+		"vscoss.vscode-ansible",
+		"bungcip.better-toml",
+		"davidanson.vscode-markdownlint",
+		"redhat.vscode-yaml",
+		"samuelcolvin.jinjahtml"
+	],
+	"settings": {
+		"python.pythonPath": "/opt/conda/bin/python",
+		"python.linting.flake8Enabled": true,
+		"python.linting.enabled": true,
+		"python.linting.flake8Args": [
+			// "--ignore=E501,E402"
+			"--max-line-length=88"
+		],
+		"python.formatting.provider": "black",
+		"python.linting.pylintEnabled": false
+	},
+	"postCreateCommand": "apt-get update -y && apt-get install -y git gcc make vim wget tcpdump curl wget && pip install -r requirements.txt"
+}
