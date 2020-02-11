@@ -1,1 +1,7 @@
+FROM continuumio/miniconda3
 
+LABEL version="1.0.0"
+LABEL description="Python based container for VSCode"
+LABEL maintainer="Rick Donato"
+
+CMD ["/bin/bash"]
