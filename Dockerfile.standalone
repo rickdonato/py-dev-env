@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3
+FROM python:3.8-rc-slim-stretch
 
 LABEL version="0.0.1"
 LABEL description="Python based dev environment"
@@ -8,7 +8,7 @@ WORKDIR /workspace
 COPY . /workspace
 
 RUN apt-get update -y 
-RUN apt-get install -y tcpdump curl wget gcc 
+RUN apt-get install -y vim tcpdump curl wget gcc 
 
 RUN pip install -r requirements.txt 
 
