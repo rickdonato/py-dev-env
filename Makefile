@@ -64,6 +64,36 @@ update: ## Update pip requirements.txt
 	pip freeze > requirements.txt
 
 ### -------------------------------------------------
+### VIRTUALENV
+### -------------------------------------------------
+
+.PHONY: add-venv-py3.6
+add-venv-py3.6: ## Install virtualenv, create virtualenv, install requirements
+        @echo "[*] Installing/creating virtualenv and deps (Python3.6)"
+        pip3.6 install virtualenv
+        virtualenv -p /usr/bin/python3.6 venv
+        . ./venv/bin/activate
+        venv/bin/pip3.6 install -r ./requirements.txt
+
+.PHONY: add-venv-py3.8
+add-venv-py3.8: ## Install virtualenv, create virtualenv, install requirements
+        @echo "[*] Installing/creating virtualenv and deps (Python3.8)"
+        pip3 install virtualenv
+	apt-get install python3.8-distutils -y
+        virtualenv -p /usr/bin/python3.8 venv
+        . ./venv/bin/activate
+        venv/bin/pip3 install -r ./requirements.txt
+
+.PHONY: add-venv-py2.7
+add-venv-py2.7: ## Install virtualenv, create virtualenv, install requirements
+        @echo "[*] Installing/creating virtualenv and deps (Python2.7)"
+        pip2.7 install virtualenv
+        virtualenv -p /usr/bin/python2.7 venv
+        . ./venv/bin/activate
+        venv/bin/pip2.7 install -r ./requirements.txt
+
+
+### -------------------------------------------------
 ### DOCKER
 ### -------------------------------------------------
 
