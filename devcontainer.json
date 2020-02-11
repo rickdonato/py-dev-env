@@ -1,7 +1,7 @@
 {
 	"name": "docker-vscode-env",
 	"context": "..",
-	"dockerFile": "../Dockerfile",
+	"dockerFile": "../Dockerfile.vscode",
 	//"workspaceFolder": "/<app>",
 	//"workspaceMount": "src=/home/<user>/tmp,dst=/<app>,type=bind",
 	"extensions": [
