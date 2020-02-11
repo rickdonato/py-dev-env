@@ -2,7 +2,7 @@
 	"name": "docker-vscode-env",
 	"context": "..",
 	"dockerFile": "../Dockerfile.vscode",
-	"workspaceFolder": "/workspace,
+	"workspaceFolder": "/workspace",
 	"mounts": ["source=~/.ssh,target=/root/.ssh,type=bind"],
 	"extensions": [
 		"ms-python.python",
