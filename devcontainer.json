@@ -2,8 +2,8 @@
 	"name": "docker-vscode-env",
 	"context": "..",
 	"dockerFile": "../Dockerfile.vscode",
-	//"workspaceFolder": "/<app>",
-	//"workspaceMount": "src=/home/<user>/tmp,dst=/<app>,type=bind",
+	"workspaceFolder": "/workspace,
+	"mounts": ["source=~/.ssh,target=/root/.ssh,type=bind"],
 	"extensions": [
 		"ms-python.python",
 		"vscoss.vscode-ansible",
