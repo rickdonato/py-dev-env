@@ -1,8 +1,20 @@
 # Network Automation Python Environment
 
 ## Docker
+```
+git clone https://github.com/rickdonato/network-automation-py-dev
+docker build --tag network-automation-dev:standalone --file Dockerfile.standalone .
+docker run --rm -it network-automation-dev:standalone
+```
+
+## VSCode
+* `git clone https://github.com/rickdonato/network-automation-py-dev`
+* Open `network-automation-py-dev` folder in VSCode.
+* VSCode will detect `devcontainer.json` file and create container.
+* Your dev envrionment will be ready using this container environment.
 
 ## Makefile
+Various tasks can be run via the `Makefile`, such as: 
 ```
 $ make
   add-venv-py2.7            Install virtualenv, create virtualenv, install requirements
@@ -18,6 +30,3 @@ $ make
   run                       run docker container
   update                    Update pip requirements.txt
 ```
-
-## VSCode
-
