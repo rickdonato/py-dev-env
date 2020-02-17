@@ -12,6 +12,7 @@ docker run --rm -it network-automation-dev:standalone
 * Open `network-automation-py-dev` folder in VSCode.
 * VSCode will detect `devcontainer.json` file and create container.
 * Your dev envrionment will be ready using this container environment.
+For full details around environment checkout `devcontainer.json`.
 
 ## Makefile
 Various tasks can be run via the `Makefile`, such as: 
