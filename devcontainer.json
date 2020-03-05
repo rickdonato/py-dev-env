@@ -1,9 +1,8 @@
 {
 	"name": "docker-vscode-env",
 	"context": "..",
-	"dockerFile": "./Dockerfile.vscode",
-	"workspaceFolder": "/workspace",
-	"mounts": ["source=~/.ssh,target=/root/.ssh,type=bind"],
+	"dockerFile": "Dockerfile.vscode",
+	"mounts": ["source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached"],
 	"extensions": [
 		"ms-python.python",
 		"vscoss.vscode-ansible",
@@ -22,5 +21,5 @@
 		"python.formatting.provider": "black",
 		"python.linting.pylintEnabled": false
 	},
-	"postCreateCommand": "apt-get update -y && apt-get install -y git gcc make vim wget tcpdump curl wget && pip install -r requirements.txt"
+	"postCreateCommand": "apt-get update -y && apt-get install -y iputils-ping git gcc make vim wget tcpdump curl wget && pip install -r requirements.txt"
 }
