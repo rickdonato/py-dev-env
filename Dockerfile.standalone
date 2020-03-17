@@ -8,7 +8,7 @@ WORKDIR /workspace
 COPY . /workspace
 
 RUN apt-get update -y 
-RUN apt-get install -y vim tcpdump curl wget gcc 
+RUN apt-get install -y vim tcpdump curl wget gcc procps
 
 RUN pip install -r requirements.txt 
 
