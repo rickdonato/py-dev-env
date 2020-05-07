@@ -20,3 +20,6 @@ Various tasks can be run via the `Makefile`.
 ## Tools
 The following tools are installed:
 * Chromaterm - Colorize network output - `cat running-config.txt | ct`
+
+## To Do
+https://ohmyz.sh/
