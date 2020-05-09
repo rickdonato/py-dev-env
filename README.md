@@ -22,4 +22,5 @@ The following tools are installed:
 * Chromaterm - Colorize network output - `cat running-config.txt | ct`
 
 ## To Do
-https://ohmyz.sh/
+Shell - https://ohmyz.sh/
+Flake8 - Linter
