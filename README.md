@@ -1,5 +1,7 @@
 # Network Automation Python Environment
 
+This repo is WIP...
+
 ## Docker
 ```
 git clone https://github.com/rickdonato/network-automation-py-dev
@@ -21,9 +23,20 @@ Various tasks can be run via the `Makefile`.
 The following tools are installed:
 * Chromaterm - Colorize network output - `cat running-config.txt | ct`
 
+## VSCode Extenstions
+* alefragnani.bookmarks
+* usernamehw.errorlens
+* eamodio.gitlens
+* oderwat.indent-rainbow
+* rubymaniac.vscode-paste-and-indent
+* ms-python.python
+* visualstudioexptteam.vscodeintellicode
+
+
 ## To Do
 Shell - https://ohmyz.sh/
 Flake8 - Linter
 Black - code formatters
 Bandit - Security Checker
 vulture - find unused code.
+
