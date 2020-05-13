@@ -1,15 +1,15 @@
-FROM python:3.8-rc-slim-stretch
+FROM python:3.8
 
 LABEL version="0.0.1"
-LABEL description="Python based dev environment"
+LABEL description="Network Automation Development Environment"
 LABEL maintainer="Rick Donato"
 
 WORKDIR /workspace
 COPY . /workspace
 
+# Below lines will not be run when using integrated VSCode/Docker. 
 RUN apt-get update -y 
 RUN apt-get install -y vim tcpdump curl wget gcc procps net-tools
-
-RUN pip install -r requirements.txt 
+RUN pip install -r requirements.txt
 
 CMD ["/bin/bash"]

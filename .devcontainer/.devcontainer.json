@@ -1,7 +1,7 @@
 {
-	"name": "docker-vscode-env",
-	"context": "..",
-	"dockerFile": "Dockerfile.vscode",
+	"name": "py-network-automation-env",
+	"context": ".",
+	"dockerFile": "Dockerfile",
 	"mounts": ["source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached"],
 	"extensions": [
 		"ms-python.python",
@@ -9,7 +9,11 @@
 		"bungcip.better-toml",
 		"davidanson.vscode-markdownlint",
 		"redhat.vscode-yaml",
-		"samuelcolvin.jinjahtml"
+		"samuelcolvin.jinjahtml",
+		"eamodio.gitlens",
+		"oderwat.indent-rainbow",
+		"hediet.vscode-drawio",
+		"usernamehw.errorlens"
 	],
 	"settings": {
 		"python.pythonPath": "/opt/conda/bin/python",
