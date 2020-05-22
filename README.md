@@ -34,9 +34,15 @@ The following tools are installed:
 
 
 ## To Do
-Shell - https://ohmyz.sh/
-Flake8 - Linter
-Black - code formatters
-Bandit - Security Checker
-vulture - find unused code.
+poetery
 
+* Shell - https://ohmyz.sh/
+
+* pylint - Linter
+* Black - code formatters
+* vulture - find unused code.
+
+* pylint
+
+* saftey
+* Bandit - Security Checker
